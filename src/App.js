@@ -1,23 +1,30 @@
-import logo from './logo.svg';
+import React, {  useState, useEffect } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css'; 
 import './App.css';
+import LoadingPage from './Components/LoadingPage';
+import MainContent from './MainContent';
 
 function App() {
+  const [showLoading, setShowLoading] = useState(true);
+
+  // Fungsi ini akan dipanggil setelah tampilan pemuatan selesai
+  const handleLoadingComplete = () => {
+    setShowLoading(false);
+  };
+
+  useEffect(() => {
+    AOS.init({
+      duration: 600, // Durasi animasi
+      once: true, // Animasi hanya berlangsung sekali saat halaman dimuat
+    });
+  }, []); // Ini akan menjalankan AOS saat komponen dimuat
+
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {showLoading ? <LoadingPage onLoadingComplete={handleLoadingComplete} /> : <MainContent />}
     </div>
   );
 }
