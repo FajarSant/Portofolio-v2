@@ -85,7 +85,7 @@ const MainContent = () => {
             <li>
               <Link
                 to="home"
-                smooth={true}
+                smooth={true}   
                 duration={500}
                 offset={-64}
                 className={`text-gray-600 cursor-pointer ${
