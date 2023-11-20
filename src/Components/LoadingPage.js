@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from "react";
 import "../Style/LoadingPage.css"; // Import file CSS
-import backgroundGif from "../Assets/bg.gif";
 import aku from "../Assets/aku1.jpg";
 
 function LoadingPage({ onLoadingComplete }) {
@@ -69,7 +68,11 @@ function LoadingPage({ onLoadingComplete }) {
   return (
     <div className="w-screen h-screen flex flex-col items-center justify-center text-white relative">
       <div className="background-gif">
-        <img src={backgroundGif} alt="Background GIF" className="w-full h-full" />
+        <img
+          src="https://wallpaperxyz.com/wp-content/uploads/Gif-Animated-Wallpaper-Background-Full-HD-Free-Download-for-PC-Macbook-261121-Wallpaperxyz.com-35.gif"
+          alt="Background GIF"
+          className="w-full h-full"
+        />
       </div>
       <div className={`text-4xl font-bold text-center typing-text ${showProfile ? 'hidden' : ''}`}>
         {loadingText}
