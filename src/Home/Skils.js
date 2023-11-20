@@ -77,10 +77,10 @@ function Skills() {
 
   return (
     <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4">
-        Contoh Grid dengan Tailwind CSS dan Daisy UI
+      <h1 className="text-2xl font-bold mb-4 text-center">
+        Beberapa bahas yang saya pelajari
       </h1>
-      <div ref={ref} style={style} className="p-20 mt-9">
+      <div ref={ref} style={style} className="p-4 md:p-20 mt-9">
         <motion.div
           className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 md:gap-8 lg:gap-10"
           initial={{ opacity: 0, y: 50 }}
@@ -106,11 +106,11 @@ function Skills() {
                   className="img-tech drop-shadow-xl transition-all duration-300 h-[85%] w-[85%]"
                 />
               </div>
-              <div className="flex items-center text-sm lg:text-base">
+              <div className="flex flex-col items-center text-sm lg:text-base text-center">
                 <div className="tech font-medium text-secondary transition-all duration-300">
                   {tech.name}
                 </div>
-                <div className="status-tech opacity-0 ml-2 text-xs lg:text-sm">
+                <div className="status-tech opacity-0 mt-1 text-xs lg:text-sm">
                   {tech.status}
                 </div>
               </div>
