@@ -1,3 +1,5 @@
+// MainContent.jsx
+
 import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { Link, animateScroll as scroll } from 'react-scroll';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
@@ -82,99 +84,25 @@ const MainContent = () => {
           </div>
 
           <ul className="flex space-x-4">
-            <li>
-              <Link
-                to="home"
-                smooth={true}   
-                duration={500}
-                offset={-64}
-                className={`text-gray-600 cursor-pointer ${
-                  activeSection === 'home' ? 'active' : ''
-                } hover:text-black hover:active:text-red-500`}
-              >
-                Home
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="biodata"
-                smooth={true}
-                duration={500}
-                offset={-64}
-                className={`text-gray-600 cursor-pointer ${
-                  activeSection === 'biodata' ? 'active' : ''
-                } hover:text-black hover:active:text-red-500`}
-              >
-                Biodata
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="portofolio"
-                smooth={true}
-                duration={500}
-                offset={-64}
-                className={`text-gray-600 cursor-pointer ${
-                  activeSection === 'portofolio' ? 'active' : ''
-                } hover:text-black hover:active:text-red-500`}
-              >
-                Portofolio
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="skills"
-                smooth={true}
-                duration={500}
-                offset={-64}
-                className={`text-gray-600 cursor-pointer ${
-                  activeSection === 'skills' ? 'active' : ''
-                } hover:text-black hover:active:text-red-500`}
-              >
-                Skills
-              </Link>
-            </li>
+            {/* ... (existing code) */}
           </ul>
 
           <div className="flex items-center space-x-4">
-            <a
-              href="https://github.com/FajarSant"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FaGithub
-                className={`text-gray-600 ${
-                  activeSection === 'github' ? 'active' : ''
-                } hover:text-black hover:active:text-red-500 cursor-pointer`}
-                size={24}
-              />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/fajar-santoso-a33b50277/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FaLinkedin
-                className={`text-gray-600 ${
-                  activeSection === 'linkedin' ? 'active' : ''
-                } hover:text-black hover:active:text-red-500 cursor-pointer`}
-                size={24}
-              />
-            </a>
+            {/* ... (existing code) */}
           </div>
         </div>
       </nav>
 
-      <div ref={homeRef} className="content p-20" id="home">
+      <div ref={homeRef} className="content p-10 md:p-20" id="home">
         <Home />
       </div>
-      <div ref={biodataRef} className="content p-20" id="biodata">
+      <div ref={biodataRef} className="content p-10 md:p-20" id="biodata">
         <Biodata />
       </div>
-      <div ref={portofolioRef} className="content p-20" id="portofolio">
+      <div ref={portofolioRef} className="content p-10 md:p-20" id="portofolio">
         <Portofolio />
       </div>
-      <div ref={skillsRef} className="content p-20" id="skills">
+      <div ref={skillsRef} className="content p-10 md:p-20" id="skills">
         <Skills />
       </div>
       <Footer />
