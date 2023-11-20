@@ -1,0 +1,11 @@
+[build]
+  command = "npm run build"  # Sesuaikan dengan skrip build Anda
+  publish = "build"          # Sesuaikan dengan direktori output build Anda
+
+[dev]
+  command = "npm start"      # Skrip untuk menjalankan aplikasi secara lokal
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
