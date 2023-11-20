@@ -74,18 +74,17 @@ function LoadingPage({ onLoadingComplete }) {
         Situs ini masih dalam pengembangan jadi lebih optimal dilihat pada mode desktop atau layar dengan resolusi tinggi.
       </div>
       <div className="background-gif">
-        {/* Gunakan format lain atau optimalkan gambar GIF */}
         <img
           src="https://wallpaperxyz.com/wp-content/uploads/Gif-Animated-Wallpaper-Background-Full-HD-Free-Download-for-PC-Macbook-261121-Wallpaperxyz.com-35.gif"
           alt="Background GIF"
-          className="w-full h-full"
+          className="w-full h-full object-cover"
         />
       </div>
-      <div className={`text-4xl font-bold text-center typing-text ${showProfile ? "hidden" : ""}`}>
+      <div className={`text-lg md:text-2xl lg:text-4xl font-bold text-center typing-text ${showProfile ? "hidden" : ""}`}>
         {loadingText}
         {blinkPipe && "|"}
       </div>
-      <div className="clock">
+      <div className="clock text-sm md:text-lg lg:text-xl">
         {currentTime.toLocaleTimeString(undefined, {
           hour: "numeric",
           minute: "numeric",
@@ -100,7 +99,7 @@ function LoadingPage({ onLoadingComplete }) {
         </div>
       </div>
       {showLoadingButton && (
-        <button className="btn btn-outline btn-error mt-9">
+        <button className="btn btn-outline btn-error mt-4 md:mt-9">
           <span className="loading loading-spinner"></span>
         </button>
       )}
@@ -108,13 +107,12 @@ function LoadingPage({ onLoadingComplete }) {
         <div className={`profile-container absolute bottom-0 ${showProfile ? "visible" : "hidden"}`}>
           <img
             alt="avatar"
-            width="100%"
-            className={`rounded-full border-4 border-amber-200 pict ${showProfile ? "visible" : "hidden"}`}
+            className="rounded-full border-4 border-amber-200 pict"
             src={aku}
           />
           {showNextButton && (
             <button
-              className="btn btn-outline btn-error mt-4"
+              className="btn btn-outline btn-error mt-2 md:mt-4"
               onClick={handleNextClick}
             >
               Masuk
