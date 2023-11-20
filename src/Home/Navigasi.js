@@ -1,36 +1,103 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-import { FaGithub, FaLinkedin } from 'react-icons/fa'; // Impor ikon GitHub dan LinkedIn
+// Navigasi.js
+import React, { useState, useEffect } from 'react';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
+import '../Style/Navigasi.css'
 
-function Navigasi() {
+function Navigasi({ activeSection }) {
+  const [isSticky, setSticky] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setSticky(window.scrollY > 0);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
-    <nav className="bg-base-300 p-4 fixed top-0 left-0 right-0 z-10">
+    <nav
+      className={`bg-base-300 p-4 fixed top-0 left-0 right-0 z-10 transition-all duration-300 ${
+        isSticky ? 'shadow-lg' : ''
+      }`}
+    >
       <div className="container mx-auto flex justify-between items-center">
         <div className="flex items-center">
-          <NavLink to="/" className="text-black text-2xl font-semibold">Fajar Santoso#</NavLink>
+          <a href="#" className="text-black text-2xl font-semibold">
+            Fajar Santoso#
+          </a>
         </div>
 
         <ul className="flex space-x-4">
           <li>
-            <NavLink to="/" className="text-gray-600 hover:text-black">Home</NavLink>
+            <a
+              href="#"
+              className={`text-gray-600 ${
+                activeSection === 'home' ? 'active' : ''
+              } hover:text-black hover:active:text-red-500`}
+            >
+              Home
+            </a>
           </li>
           <li>
-            <NavLink to="/Biodata" className="text-gray-600 hover:text-black">Biodata</NavLink>
+            <a
+              href="#Biodata"
+              className={`text-gray-600 ${
+                activeSection === 'biodata' ? 'active' : ''
+              } hover:text-black hover:active:text-red-500`}
+            >
+              Biodata
+            </a>
           </li>
           <li>
-            <NavLink to="/Portofolio" className="text-gray-600 hover:text-black">Portofolio</NavLink>
+            <a
+              href="#Portofolio"
+              className={`text-gray-600 ${
+                activeSection === 'portofolio' ? 'active' : ''
+              } hover:text-black hover:active:text-red-500`}
+            >
+              Portofolio
+            </a>
           </li>
           <li>
-            <NavLink to="/Skills" className="text-gray-600 hover:text-black">Skills</NavLink>
+            <a
+              href="#Skills"
+              className={`text-gray-600 ${
+                activeSection === 'skills' ? 'active' : ''
+              } hover:text-black hover:active:text-red-500`}
+            >
+              Skills
+            </a>
           </li>
         </ul>
 
         <div className="flex items-center space-x-4">
-          <a href="https://github.com/username" target="_blank" rel="noopener noreferrer">
-            <FaGithub className="text-gray-600 hover:text-black" size={24} /> {/* Ikon GitHub */}
+          <a
+            href="https://github.com/username"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaGithub
+              className={`text-gray-600 ${
+                activeSection === 'github' ? 'active' : ''
+              } hover:text-black hover:active:text-red-500`}
+              size={24}
+            />
           </a>
-          <a href="https://www.linkedin.com/in/username" target="_blank" rel="noopener noreferrer">
-            <FaLinkedin className="text-gray-600 hover:text-black" size={24} /> {/* Ikon LinkedIn */}
+          <a
+            href="https://www.linkedin.com/in/username"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaLinkedin
+              className={`text-gray-600 ${
+                activeSection === 'linkedin' ? 'active' : ''
+              } hover:text-black hover:active:text-red-500`}
+              size={24}
+            />
           </a>
         </div>
       </div>

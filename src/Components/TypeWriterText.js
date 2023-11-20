@@ -6,7 +6,7 @@ function TypewriterText() {
 
   useEffect(() => {
     const options = {
-      strings: ["Web Developer"],
+      strings: [" Junior Web Developer"],
       typeSpeed: 50,
       backSpeed: 30,
       backDelay: 1500,

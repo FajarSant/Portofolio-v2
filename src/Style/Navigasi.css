@@ -1,0 +1,18 @@
+/* Add these styles to your CSS file */
+
+/* Style for the active section */
+.active {
+    color: #000; /* Set your desired active color */
+    font-weight: bold; /* Optionally, make the text bold for the active section */
+  }
+  
+  /* Hover effect */
+  .text-gray-600:hover {
+    color: #000; /* Set your desired hover color */
+  }
+  
+  /* Active effect on click */
+  .text-gray-600:active {
+    color: #f00; /* Set your desired active (click) color */
+  }
+  

@@ -1,17 +1,24 @@
+// LoadingPage.jsx
+
 import React, { useState, useEffect } from "react";
+import "../Style/LoadingPage.css"; // Import file CSS
+import backgroundGif from "../Assets/bg.gif";
+import aku from "../Assets/aku1.jpg";
 
 function LoadingPage({ onLoadingComplete }) {
   const [loadingText, setLoadingText] = useState("");
   const [showNextButton, setShowNextButton] = useState(false);
   const [showLoadingButton, setShowLoadingButton] = useState(true);
   const [blinkPipe, setBlinkPipe] = useState(true);
+  const [currentTime, setCurrentTime] = useState(new Date());
+  const [showProfile, setShowProfile] = useState(false);
 
   useEffect(() => {
     let isMounted = true;
 
     const textToType = "Untuk membuat teks rata tengah .";
-    const typingSpeed = 150; // Kecepatan pengetikan (dalam milidetik)
-    const blinkSpeed = 500; // Kecepatan kedipan ikon "|" (dalam milidetik)
+    const typingSpeed = 150;
+    const blinkSpeed = 500;
 
     let currentIndex = 0;
     let animationFrameId;
@@ -25,11 +32,13 @@ function LoadingPage({ onLoadingComplete }) {
           animationFrameId = requestAnimationFrame(writeText);
         }, typingSpeed);
       } else {
+        setShowNextButton(true);
+        setShowLoadingButton(true);
+        setBlinkPipe(false);
         setTimeout(() => {
-          setShowNextButton(true);
+          setShowProfile(true);
           setShowLoadingButton(false);
-          setBlinkPipe(false);
-        }, 500);
+        }, 3000);
       }
     };
 
@@ -42,9 +51,14 @@ function LoadingPage({ onLoadingComplete }) {
 
     blinkPipeFn();
 
+    const intervalId = setInterval(() => {
+      setCurrentTime(new Date());
+    }, 1000);
+
     return () => {
       isMounted = false;
       cancelAnimationFrame(animationFrameId);
+      clearInterval(intervalId);
     };
   }, []);
 
@@ -53,37 +67,64 @@ function LoadingPage({ onLoadingComplete }) {
   };
 
   return (
-    <div className="w-screen h-screen flex flex-col items-center justify-center bg-black text-white">
-      <div className="text-4xl font-bold text-center typing-text">
+    <div className="w-screen h-screen flex flex-col items-center justify-center text-white relative">
+      <div className="background-gif">
+        <img src={backgroundGif} alt="Background GIF" className="w-full h-full" />
+      </div>
+      <div className={`text-4xl font-bold text-center typing-text ${showProfile ? 'hidden' : ''}`}>
         {loadingText}
         {blinkPipe && "|"}
+      </div>
+      <div className="clock">
+        {currentTime.toLocaleTimeString(undefined, {
+          hour: 'numeric',
+          minute: 'numeric',
+        })}
+        <div className="day-date">
+          {currentTime.toLocaleDateString(undefined, {
+            weekday: 'long',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+          })}
+        </div>
       </div>
       {showLoadingButton && (
         <button className="btn btn-outline btn-error mt-9">
           <span className="loading loading-spinner"></span>
         </button>
       )}
-      {showNextButton && (
-        <button
-          className="btn btn-outline btn-error mt-9"
-          onClick={handleNextClick}
-        >
-          Button
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-            />
-          </svg>
-        </button>
+      {showNextButton && showProfile && (
+        <div className={`profile-container absolute bottom-0 ${showProfile ? 'show' : ''}`}>
+          <img
+            alt="avatar"
+            width="100%"
+            className={`rounded-full border-4 border-amber-200 pict ${showProfile ? 'show' : ''}`}
+            src={aku}
+          />
+          {showNextButton && (
+            <button
+              className="btn btn-outline btn-error mt-4"
+              onClick={handleNextClick}
+            >
+              Masuk
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                />
+              </svg>
+            </button>
+          )}
+        </div>
       )}
     </div>
   );
