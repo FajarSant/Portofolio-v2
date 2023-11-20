@@ -5,26 +5,26 @@ const Footer = () => {
   return (
     <footer className="footer footer-center p-10 bg-base-300 bg-opacity-90 text-base-content rounded">
       <nav className="grid grid-flow-col gap-4">
-        <a className="link link-hover">About us</a>
-        <a className="link link-hover">Contact</a>
-        <a className="link link-hover">Jobs</a>
-        <a className="link link-hover">Press kit</a>
+        <a className="">About us</a>
+        <a className="">Contact</a>
+        <a className="">Jobs</a>
+        <a className="">Press kit</a>
       </nav>
       <nav>
         <div className="grid grid-flow-col gap-4">
-          <a href="https://twitter.com/your_twitter">
+          <a href="https://twitter.com/fajarsant">
             <FaTwitter size={32} color="#1DA1F2" />
           </a>
-          <a href="https://www.instagram.com/your_instagram">
+          <a href="https://www.instagram.com/FajarSantf">
             <FaInstagram size={32} color="#E4405F" />
           </a>
-          <a href="https://www.tiktok.com/your_tiktok">
+          <a href="https://www.tiktok.com/FajarSantf">
             <FaTiktok size={32} color="#69C9D0" />
           </a>
         </div>
       </nav>
       <aside>
-        <p>Copyright © 2023 - All rights reserved by ACME Industries Ltd</p>
+        <p>Copyright © 2023 - ShinXyc</p>
       </aside>
     </footer>
   );

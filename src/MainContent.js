@@ -5,6 +5,7 @@ import Home from './Home/Home';
 import Biodata from './Home/Biodata';
 import Portofolio from './Home/Portofolio';
 import Skils from './Home/Skils';
+import Footer from './Home/Footer';
 import './Style/Navigasi.css';
 
 const MainContent = () => {
@@ -107,7 +108,7 @@ const MainContent = () => {
 
           <div className="flex items-center space-x-4">
             <a
-              href="https://github.com/username"
+              href="https://github.com/FajarSant"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -119,7 +120,7 @@ const MainContent = () => {
               />
             </a>
             <a
-              href="https://www.linkedin.com/in/username"
+              href="https://www.linkedin.com/in/fajar-santoso-a33b50277/"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -146,6 +147,7 @@ const MainContent = () => {
       <div ref={skillsRef} className="content p-20" id="Skills">
         <Skils />
       </div>
+      <Footer/>
     </div>
   );
 };
