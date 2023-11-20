@@ -1,3 +1,5 @@
+// Home.js
+
 import React from 'react';
 import aku from '../Assets/aku1.jpg';
 import TypewriterText from '../Components/TypeWriterText';
@@ -21,15 +23,15 @@ const imageVariants = {
 function Home() {
   const handleDownloadCV = () => {
     // Gantilah URL berikut dengan URL file CV Anda
-    const cvFileUrl = {aku};
+    const cvFileUrl = '/path/to/your/cv.pdf';  // Ganti dengan path yang sesuai
     window.location.href = cvFileUrl;
   };
 
   const handleContactMe = () => {
     // Gantilah nomor WhatsApp dan pesan yang sesuai
-    const phoneNumber = 'NOMOR_WHATSAPP';
+    const phoneNumber = '+6285728056216';
     const message = 'Halo, saya tertarik untuk berbicara dengan Anda.';
-    const whatsappUrl = `https://api.whatsapp.com/send?phone=${+6285728056216}&text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`;
     window.location.href = whatsappUrl;
   };
 
@@ -67,7 +69,7 @@ function Home() {
         </div>
       </motion.div>
       <motion.div
-        className="welcome-image-container flex justify-center "
+        className="welcome-image-container flex justify-center"
         variants={imageVariants}
       >
         <motion.img

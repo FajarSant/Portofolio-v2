@@ -1,10 +1,10 @@
-// MainContent.js
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
+import { Link, animateScroll as scroll } from 'react-scroll';
 import Home from './Home/Home';
 import Biodata from './Home/Biodata';
 import Portofolio from './Home/Portofolio';
-import Skils from './Home/Skils';
+import Skills from './Home/Skils';
 import Footer from './Home/Footer';
 import './Style/Navigasi.css';
 
@@ -18,12 +18,12 @@ const MainContent = () => {
   const portofolioRef = useRef(null);
   const skillsRef = useRef(null);
 
-  const sectionRefs = {
+  const sectionRefs = useMemo(() => ({
     home: homeRef,
     biodata: biodataRef,
     portofolio: portofolioRef,
     skills: skillsRef,
-  };
+  }), [homeRef, biodataRef, portofolioRef, skillsRef]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -45,6 +45,10 @@ const MainContent = () => {
     };
   }, [sectionRefs]);
 
+  const scrollToTop = () => {
+    scroll.scrollToTop();
+  };
+
   return (
     <div>
       <nav
@@ -54,55 +58,67 @@ const MainContent = () => {
       >
         <div className="container mx-auto flex justify-between items-center">
           <div className="flex items-center">
-            <a href="#" className="text-black text-2xl font-semibold">
+            <a
+              href="#home"
+              className="text-black text-2xl font-semibold cursor-pointer"
+              onClick={scrollToTop}
+            >
               Fajar Santoso#
             </a>
           </div>
 
           <ul className="flex space-x-4">
             <li>
-              <a
-                href="#"
-                className={`text-gray-600 ${
+              <Link
+                to="home"
+                smooth={true}
+                duration={500}
+                offset={-64}
+                className={`text-gray-600 cursor-pointer ${
                   activeSection === 'home' ? 'active' : ''
                 } hover:text-black hover:active:text-red-500`}
-                onClick={() => setActiveSection('home')}
               >
                 Home
-              </a>
+              </Link>
             </li>
             <li>
-              <a
-                href="#Biodata"
-                className={`text-gray-600 ${
+              <Link
+                to="biodata"
+                smooth={true}
+                duration={500}
+                offset={-64}
+                className={`text-gray-600 cursor-pointer ${
                   activeSection === 'biodata' ? 'active' : ''
                 } hover:text-black hover:active:text-red-500`}
-                onClick={() => setActiveSection('biodata')}
               >
                 Biodata
-              </a>
+              </Link>
             </li>
             <li>
-              <a
-                href="#Portofolio"
-                className={`text-gray-600 ${
+              <Link
+                to="portofolio"
+                smooth={true}
+                duration={500}
+                offset={-64}
+                className={`text-gray-600 cursor-pointer ${
                   activeSection === 'portofolio' ? 'active' : ''
                 } hover:text-black hover:active:text-red-500`}
-                onClick={() => setActiveSection('portofolio')}
               >
                 Portofolio
-              </a>
+              </Link>
             </li>
             <li>
-              <a
-                href="#Skills"
-                className={`text-gray-600 ${
+              <Link
+                to="skills"
+                smooth={true}
+                duration={500}
+                offset={-64}
+                className={`text-gray-600 cursor-pointer ${
                   activeSection === 'skills' ? 'active' : ''
                 } hover:text-black hover:active:text-red-500`}
-                onClick={() => setActiveSection('skills')}
               >
                 Skills
-              </a>
+              </Link>
             </li>
           </ul>
 
@@ -115,7 +131,7 @@ const MainContent = () => {
               <FaGithub
                 className={`text-gray-600 ${
                   activeSection === 'github' ? 'active' : ''
-                } hover:text-black hover:active:text-red-500`}
+                } hover:text-black hover:active:text-red-500 cursor-pointer`}
                 size={24}
               />
             </a>
@@ -127,7 +143,7 @@ const MainContent = () => {
               <FaLinkedin
                 className={`text-gray-600 ${
                   activeSection === 'linkedin' ? 'active' : ''
-                } hover:text-black hover:active:text-red-500`}
+                } hover:text-black hover:active:text-red-500 cursor-pointer`}
                 size={24}
               />
             </a>
@@ -138,16 +154,16 @@ const MainContent = () => {
       <div ref={homeRef} className="content p-20" id="home">
         <Home />
       </div>
-      <div ref={biodataRef} className="content p-20" id="Biodata">
+      <div ref={biodataRef} className="content p-20" id="biodata">
         <Biodata />
       </div>
-      <div ref={portofolioRef} className="content p-20" id="Portofolio">
+      <div ref={portofolioRef} className="content p-20" id="portofolio">
         <Portofolio />
       </div>
-      <div ref={skillsRef} className="content p-20" id="Skills">
-        <Skils />
+      <div ref={skillsRef} className="content p-20" id="skills">
+        <Skills />
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 };
