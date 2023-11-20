@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useMemo } from 'react';
-import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { Link, animateScroll as scroll } from 'react-scroll';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import Home from './Home/Home';
 import Biodata from './Home/Biodata';
 import Portofolio from './Home/Portofolio';
@@ -11,6 +11,7 @@ import './Style/Navigasi.css';
 const MainContent = () => {
   const [activeSection, setActiveSection] = useState('home');
   const [isSticky, setSticky] = useState(false);
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
 
   // Refs for each section
   const homeRef = useRef(null);
@@ -18,16 +19,19 @@ const MainContent = () => {
   const portofolioRef = useRef(null);
   const skillsRef = useRef(null);
 
-  const sectionRefs = useMemo(() => ({
-    home: homeRef,
-    biodata: biodataRef,
-    portofolio: portofolioRef,
-    skills: skillsRef,
-  }), [homeRef, biodataRef, portofolioRef, skillsRef]);
+  const sectionRefs = useMemo(
+    () => ({
+      home: homeRef,
+      biodata: biodataRef,
+      portofolio: portofolioRef,
+      skills: skillsRef,
+    }),
+    [homeRef, biodataRef, portofolioRef, skillsRef]
+  );
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY + 64; // Consider the height of the fixed navbar
+      const scrollPosition = window.scrollY + 64;
 
       for (const [section, ref] of Object.entries(sectionRefs)) {
         if (ref.current && ref.current.offsetTop <= scrollPosition) {
@@ -38,10 +42,18 @@ const MainContent = () => {
       setSticky(scrollPosition > 0);
     };
 
+    const handleResize = () => {
+      setIsSmallScreen(window.innerWidth <= 768);
+    };
+
+    handleResize();
+
     window.addEventListener('scroll', handleScroll);
+    window.addEventListener('resize', handleResize);
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleResize);
     };
   }, [sectionRefs]);
 
@@ -54,17 +66,19 @@ const MainContent = () => {
       <nav
         className={`bg-base-300 p-4 fixed top-0 left-0 right-0 z-10 transition-all duration-300 ${
           isSticky ? 'shadow-lg' : ''
-        }`}
+        } ${isSmallScreen ? 'hidden' : ''}`}
       >
         <div className="container mx-auto flex justify-between items-center">
           <div className="flex items-center">
-            <a
-              href="#home"
-              className="text-black text-2xl font-semibold cursor-pointer"
-              onClick={scrollToTop}
-            >
-              Fajar Santoso#
-            </a>
+            {!isSmallScreen && (
+              <a
+                href="#home"
+                className="text-black text-2xl font-semibold cursor-pointer"
+                onClick={scrollToTop}
+              >
+                Fajar Santoso#
+              </a>
+            )}
           </div>
 
           <ul className="flex space-x-4">

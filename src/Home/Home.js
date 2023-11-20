@@ -47,7 +47,7 @@ function Home() {
         variants={textVariants}
       >
         <p className="text-black">Hello World, I'm</p>
-        <h1 className="text-2xl md:text-4xl font-bold text-black fadein-up">Bagas Rakha</h1>
+        <h1 className="text-2xl md:text-4xl font-bold text-black fadein-up">Fajar Santoso</h1>
         <div className="py-2">
           <motion.h1
             className="typewrite text-xl md:text-2xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-black to-yellow-500 fadein-up"

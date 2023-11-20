@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import "../Style/LoadingPage.css"; // Import file CSS
-import aku from "../Assets/aku1.jpg";
+import aku from "../Assets/aku2.jpg";
 
 function LoadingPage({ onLoadingComplete }) {
   const [loadingText, setLoadingText] = useState("");
@@ -15,7 +15,8 @@ function LoadingPage({ onLoadingComplete }) {
   useEffect(() => {
     let isMounted = true;
 
-    const textToType = "Untuk membuat teks rata tengah .";
+    const textToType =
+      "Life is short, so gue gak mau jadi NPC di kehidupan sendiri.\nGue berusaha keras, biar plot twist-nya gue yang nulis! 🔥.";
     const typingSpeed = 150;
     const blinkSpeed = 500;
 
@@ -50,14 +51,16 @@ function LoadingPage({ onLoadingComplete }) {
 
     blinkPipeFn();
 
-    const intervalId = setInterval(() => {
+    const updateCurrentTime = () => {
       setCurrentTime(new Date());
-    }, 1000);
+      requestAnimationFrame(updateCurrentTime);
+    };
+
+    requestAnimationFrame(updateCurrentTime);
 
     return () => {
       isMounted = false;
       cancelAnimationFrame(animationFrameId);
-      clearInterval(intervalId);
     };
   }, []);
 
@@ -68,27 +71,28 @@ function LoadingPage({ onLoadingComplete }) {
   return (
     <div className="w-screen h-screen flex flex-col items-center justify-center text-white relative">
       <div className="background-gif">
+        {/* Gunakan format lain atau optimalkan gambar GIF */}
         <img
           src="https://wallpaperxyz.com/wp-content/uploads/Gif-Animated-Wallpaper-Background-Full-HD-Free-Download-for-PC-Macbook-261121-Wallpaperxyz.com-35.gif"
           alt="Background GIF"
           className="w-full h-full"
         />
       </div>
-      <div className={`text-4xl font-bold text-center typing-text ${showProfile ? 'hidden' : ''}`}>
+      <div className={`text-4xl font-bold text-center typing-text ${showProfile ? "hidden" : ""}`}>
         {loadingText}
         {blinkPipe && "|"}
       </div>
       <div className="clock">
         {currentTime.toLocaleTimeString(undefined, {
-          hour: 'numeric',
-          minute: 'numeric',
+          hour: "numeric",
+          minute: "numeric",
         })}
         <div className="day-date">
           {currentTime.toLocaleDateString(undefined, {
-            weekday: 'long',
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric',
+            weekday: "long",
+            year: "numeric",
+            month: "long",
+            day: "numeric",
           })}
         </div>
       </div>
@@ -98,11 +102,11 @@ function LoadingPage({ onLoadingComplete }) {
         </button>
       )}
       {showNextButton && showProfile && (
-        <div className={`profile-container absolute bottom-0 ${showProfile ? 'show' : ''}`}>
+        <div className={`profile-container absolute bottom-0 ${showProfile ? "visible" : "hidden"}`}>
           <img
             alt="avatar"
             width="100%"
-            className={`rounded-full border-4 border-amber-200 pict ${showProfile ? 'show' : ''}`}
+            className={`rounded-full border-4 border-amber-200 pict ${showProfile ? "visible" : "hidden"}`}
             src={aku}
           />
           {showNextButton && (
