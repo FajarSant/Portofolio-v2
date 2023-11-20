@@ -1,19 +1,18 @@
 // Introduction.js
-
 import React from "react";
 import yourImage from "../Assets/aku1.jpg";
 import TypeWriterText from "../Components/TypeWriterText";
 import { motion } from "framer-motion";
 
 const contactInfo = {
-  email: "your.email@example.com", // Ganti dengan alamat email Anda
+  email: "your.email@example.com",
   subject: "Pertanyaan dari Pengunjung Website",
   message: "Halo Fajar, \n\nSaya tertarik dengan profil Anda dan ingin berbicara lebih lanjut."
 };
 
 const handleDownloadCV = () => {
   const link = document.createElement('a');
-  link.href = '/path/to/your/cv.pdf'; // Ganti dengan path sebenarnya ke file CV Anda
+  link.href = '/path/to/your/cv.pdf'; 
   link.download = 'Fajar_Santoso_CV.pdf';
   link.click();
 };
@@ -26,12 +25,14 @@ const handleContactMe = () => {
 
 const TextContent = () => {
   return (
-    <div className="text-content text-center md:text-left ">
-      <motion.h2
+    <motion.div
+      initial={{ opacity: 0, x: -100 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 1 }}
+      className="text-content text-center md:text-left "
+    >
+      <h2
         className="text-2xl md:text-4xl font-bold mb-10"
-        initial={{ opacity: 0, x: -100 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 1 }}
         style={{
           background: "linear-gradient(to right, #000000, #FFD700)",
           WebkitBackgroundClip: "text",
@@ -39,7 +40,7 @@ const TextContent = () => {
         }}
       >
         Hello, Perkenalkan<br></br> Saya Fajar Santoso
-      </motion.h2>
+      </h2>
       <span
         className="text-xl font-bold neon-text"
         style={{
@@ -61,26 +62,41 @@ const TextContent = () => {
       </p>
 
       <div className="flex  md:flex-row gap-2 my-2">
-        <button className="btn btn-outline" onClick={handleDownloadCV}>
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          className="btn btn-outline"
+          onClick={handleDownloadCV}
+        >
           Download CV
-        </button>
-        <button className="btn btn-outline" onClick={handleContactMe}>
+        </motion.button>
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          className="btn btn-outline"
+          onClick={handleContactMe}
+        >
           Hubungi saya
-        </button>
+        </motion.button>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
 const ImageContent = () => {
   return (
-    <div className="image-content md:order-1 text-center md:text-left flex justify-center items-center">
+    <motion.div
+      initial={{ opacity: 0, x: 100 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 1 }}
+      className="image-content md:order-1 text-center md:text-left flex justify-center items-center"
+    >
       <img
         src={yourImage}
         alt="Introduction"
         className="w-2/4 md:w-3/4 h-auto rounded-full border-4 border-amber-200 mb-4 md:mb-0"
       />
-    </div>
+    </motion.div>
   );
 };
 

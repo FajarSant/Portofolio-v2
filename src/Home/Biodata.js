@@ -1,23 +1,27 @@
-// Biodata.js
-
 import React from "react";
 import myPhoto from "../Assets/aku.jpg";
-import {
-  FaMapMarkerAlt,
-  FaInstagram,
-  FaTwitter,
-  FaLinkedin,
-} from "react-icons/fa";
+import { FaMapMarkerAlt, FaInstagram, FaTwitter, FaLinkedin } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 const Biodata = () => {
+  const fadeIn = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 },
+  };
+
   return (
-    <div className="outer-container border-2 border-teal-500 p-4 md:p-8 rounded-md mt-10 mx-5">
+    <motion.div
+      className="outer-container border-2 border-teal-500 p-4 md:p-8 rounded-md mt-10 mx-5"
+      initial="hidden"
+      animate="visible"
+      variants={fadeIn}
+    >
       <div className="photo-bio-container flex flex-col items-center">
         <div className="photo-container mb-4">
           <img
             src={myPhoto}
             alt="My Profile"
-            className="w-2/4 md:w-1/4 h-auto rounded-full border-4 border-amber-200 mx-auto" // Tambahkan mx-auto di sini
+            className="w-2/4 md:w-1/4 h-auto rounded-full border-4 border-amber-200 mx-auto"
           />
         </div>
         <div className="bio-container text-center md:text-left">
@@ -62,7 +66,7 @@ const Biodata = () => {
           saya?"
         </p>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

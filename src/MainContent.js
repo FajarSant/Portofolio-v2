@@ -167,16 +167,16 @@ const MainContent = () => {
         </div>
       </nav>
 
-      <div ref={homeRef} className="content p-10 md:p-20" id="home">
+      <div ref={homeRef} className="content p-10 md:mt-32" id="home">
         <Home />
       </div>
-      <div ref={biodataRef} className="content p-10 md:p-20" id="biodata">
+      <div ref={biodataRef} className="content p-10 md:mt32" id="biodata">
         <Biodata />
       </div>
-      <div ref={portofolioRef} className="content p-10 md:p-20" id="portofolio">
+      <div ref={portofolioRef} className="content p-10 md:mt-32" id="portofolio">
         <Portofolio />
       </div>
-      <div ref={skillsRef} className="content p-10 md:p-20" id="skills">
+      <div ref={skillsRef} className="content p-10 md:mt-32" id="skills">
         <Skills />
       </div>
       <Footer />
