@@ -70,6 +70,9 @@ function LoadingPage({ onLoadingComplete }) {
 
   return (
     <div className="w-screen h-screen flex flex-col items-center justify-center text-white relative">
+      <div className="notification absolute top-0 left-0 right-0 bg-black p-4 text-center text-sm text-red-500">
+        Situs ini masih dalam pengembangan jadi lebih optimal dilihat pada mode desktop atau layar dengan resolusi tinggi.
+      </div>
       <div className="background-gif">
         {/* Gunakan format lain atau optimalkan gambar GIF */}
         <img

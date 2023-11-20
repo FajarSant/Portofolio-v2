@@ -41,7 +41,7 @@ const Biodata = () => {
     >
       <motion.div
         style={containerStyle}
-        className="rounded-3xl text-amber-50 p-5"
+        className="rounded-3xl text-amber-50 p-5 md:p-8"
         variants={fadeInVariants}
         initial="hidden"
         animate={inView ? "visible" : "hidden"}
@@ -58,24 +58,21 @@ const Biodata = () => {
             </div>
           </header>
           <motion.section
-            className="text-sm md:text-lg text-justify flex flex-col gap-4 md:flex-row md:gap-8 md:justify-left md:items-center"
+            className="grid md:grid-cols-2 gap-4 items-center"
             variants={fadeInVariants}
           >
-            <motion.div
-              className="flex justify-center"
-              variants={fadeImageVariants}
-            >
+            <motion.div variants={fadeImageVariants} className="md:mx-auto">
               <img
-                className="w-9/12 rounded-full mb-3 fadein-up"
+                className="w-full md:w-11/12 rounded-full mb-3 fadein-up mx-auto md:mx-0"
                 src={foto}
                 alt="Foto"
               />
             </motion.div>
-            <motion.div className="md:w-7/12" variants={fadeInVariants}>
+            <motion.div variants={fadeInVariants} className="text-white">
               <p className="mb-3 md:mb-7 fadein-left fadeins-1">
                 &nbsp; &nbsp; &nbsp; Halo semua! Gue Fajar Santoso, seorang web
                 developer asal Karanganyar, Jateng. Udah setahunan lebih nih gue
-                berkecimpung di dunia back-end dan Frontend (Fullstack)  junior web development. Gue suka banget
+                berkecimpung di dunia back-end dan Frontend (Fullstack) junior web development. Gue suka banget
                 ngoding, menurut gue, bikin program tuh bukan cuma kerjaan, tapi
                 seni yang punya nilai estetika gitu.{" "}
               </p>
