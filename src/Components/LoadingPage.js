@@ -16,7 +16,7 @@ function LoadingPage({ onLoadingComplete }) {
     let isMounted = true;
 
     const textToType =
-      "Life is short, so gue gak mau jadi NPC di kehidupan sendiri.\nGue berusaha keras, biar plot twist-nya gue yang nulis! 🔥.";
+      "Life is short, ";
     const typingSpeed = 150;
     const blinkSpeed = 500;
 

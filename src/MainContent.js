@@ -84,11 +84,85 @@ const MainContent = () => {
           </div>
 
           <ul className="flex space-x-4">
-            {/* ... (existing code) */}
+            <li>
+              <Link
+                to="home"
+                smooth={true}
+                duration={500}
+                offset={-64}
+                className={`text-gray-600 cursor-pointer ${
+                  activeSection === 'home' ? 'active' : ''
+                } hover:text-black hover:active:text-red-500`}
+              >
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="biodata"
+                smooth={true}
+                duration={500}
+                offset={-64}
+                className={`text-gray-600 cursor-pointer ${
+                  activeSection === 'biodata' ? 'active' : ''
+                } hover:text-black hover:active:text-red-500`}
+              >
+                Biodata
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="portofolio"
+                smooth={true}
+                duration={500}
+                offset={-64}
+                className={`text-gray-600 cursor-pointer ${
+                  activeSection === 'portofolio' ? 'active' : ''
+                } hover:text-black hover:active:text-red-500`}
+              >
+                Portofolio
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="skills"
+                smooth={true}
+                duration={500}
+                offset={-64}
+                className={`text-gray-600 cursor-pointer ${
+                  activeSection === 'skills' ? 'active' : ''
+                } hover:text-black hover:active:text-red-500`}
+              >
+                Skills
+              </Link>
+            </li>
           </ul>
 
           <div className="flex items-center space-x-4">
-            {/* ... (existing code) */}
+            <a
+              href="https://github.com/FajarSant"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaGithub
+                className={`text-gray-600 ${
+                  activeSection === 'github' ? 'active' : ''
+                } hover:text-black hover:active:text-red-500 cursor-pointer`}
+                size={24}
+              />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/fajar-santoso-a33b50277/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaLinkedin
+                className={`text-gray-600 ${
+                  activeSection === 'linkedin' ? 'active' : ''
+                } hover:text-black hover:active:text-red-500 cursor-pointer`}
+                size={24}
+              />
+            </a>
           </div>
         </div>
       </nav>

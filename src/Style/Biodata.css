@@ -1,0 +1,19 @@
+/* Tambahkan media query di dalam file CSS atau gunakan style langsung di komponen */
+@media (max-width: 768px) {
+    .profile-container {
+      grid-template-columns: 1fr; /* Ubah menjadi satu kolom pada perangkat seluler */
+    }
+  
+    .photo-container {
+      order: -1; /* Memindahkan foto ke atas pada perangkat seluler */
+    }
+  
+    .photo-container img {
+      width: 50%; /* Sesuaikan ukuran foto */
+    }
+  
+    .bio-container {
+      text-align: center; /* Pusatkan teks pada perangkat seluler */
+    }
+  }
+  

@@ -1,87 +1,96 @@
-// Home.js
+// Introduction.js
 
-import React from 'react';
-import aku from '../Assets/aku1.jpg';
-import TypewriterText from '../Components/TypeWriterText';
-import { motion } from 'framer-motion';
+import React from "react";
+import yourImage from "../Assets/aku1.jpg";
+import TypeWriterText from "../Components/TypeWriterText";
+import { motion } from "framer-motion";
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { staggerChildren: 0.5, delayChildren: 1 } },
+const contactInfo = {
+  email: "your.email@example.com", // Ganti dengan alamat email Anda
+  subject: "Pertanyaan dari Pengunjung Website",
+  message: "Halo Fajar, \n\nSaya tertarik dengan profil Anda dan ingin berbicara lebih lanjut."
 };
 
-const textVariants = {
-  hidden: { opacity: 0, x: -100 },
-  visible: { opacity: 1, x: 0, transition: { duration: 1 } },
+const handleDownloadCV = () => {
+  const link = document.createElement('a');
+  link.href = '/path/to/your/cv.pdf'; // Ganti dengan path sebenarnya ke file CV Anda
+  link.download = 'Fajar_Santoso_CV.pdf';
+  link.click();
 };
 
-const imageVariants = {
-  hidden: { opacity: 0, x: 100 },
-  visible: { opacity: 1, x: 0, transition: { type: 'spring', stiffness: 50 } },
+const handleContactMe = () => {
+  const { email, subject, message } = contactInfo;
+  const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
+  window.location.href = mailtoLink;
 };
 
-function Home() {
-  const handleDownloadCV = () => {
-    // Gantilah URL berikut dengan URL file CV Anda
-    const cvFileUrl = '/path/to/your/cv.pdf';  // Ganti dengan path yang sesuai
-    window.location.href = cvFileUrl;
-  };
-
-  const handleContactMe = () => {
-    // Gantilah nomor WhatsApp dan pesan yang sesuai
-    const phoneNumber = '+6285728056216';
-    const message = 'Halo, saya tertarik untuk berbicara dengan Anda.';
-    const whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`;
-    window.location.href = whatsappUrl;
-  };
-
+const TextContent = () => {
   return (
-    <motion.main
-      className="welcome-container mt-10 md:mt-1 flex flex-col-reverse gap-8 items-center md:flex-row md:gap-16 md:justify-center min-h-[65vh] md:min-h-[80vh]"
-      variants={containerVariants}
-      initial="hidden"
-      animate="visible"
-    >
-      <motion.div
-        className="welcome-text-container space-y-2 text-center md:text-left px-4 md:px-10"
-        variants={textVariants}
+    <div className="text-content text-center md:text-left ">
+      <motion.h2
+        className="text-2xl md:text-4xl font-bold mb-10"
+        initial={{ opacity: 0, x: -100 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 1 }}
+        style={{
+          background: "linear-gradient(to right, #000000, #FFD700)",
+          WebkitBackgroundClip: "text",
+          color: "transparent",
+        }}
       >
-        <p className="text-black">Hello World, I'm</p>
-        <h1 className="text-2xl md:text-4xl font-bold text-black fadein-up">Fajar Santoso</h1>
-        <div className="py-2">
-          <motion.h1
-            className="typewrite text-xl md:text-2xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-black to-yellow-500 fadein-up"
-            variants={textVariants}
-          >
-            <span className="wrap"><TypewriterText /></span>
-          </motion.h1>
-        </div>
-        <p className="text-black pr-4 fade-in-from-left animate__animated animate__fadeIn">
-          Welcome to My personal website. <span role="img" aria-label="wave">👋🏼</span>
-        </p>
-        <div className="welcome-buttons flex flex-col md:flex-row gap-4 md:gap-0 mt-4">
-          <button className="btn glass" onClick={handleDownloadCV}>
-            Download CV
-          </button>
-          <button className="btn glass" onClick={handleContactMe}>
-            Contact Me
-          </button>
-        </div>
-      </motion.div>
-      <motion.div
-        className="welcome-image-container flex justify-center"
-        variants={imageVariants}
+        Hello, Perkenalkan<br></br> Saya Fajar Santoso
+      </motion.h2>
+      <span
+        className="text-xl font-bold neon-text"
+        style={{
+          textShadow: "0 0 10px #FFD700, 0 0 20px #FFD700, 0 0 30px #FFD700",
+        }}
       >
-        <motion.img
-          alt="avatar"
-          width="100"
-          height="100"
-          className="w-8/12 rounded-full border-4 border-amber-200 pict"
-          src={aku}
-        />
-      </motion.div>
-    </motion.main>
+        <TypeWriterText />
+      </span>
+      <p className="text-sm md:text-base text-justify md:text-justify mt-5 mb-2">
+        Halo, saya Fajar Santoso. Terima kasih sudah mengunjungi website pribadi
+        saya. Di sini, Anda dapat mengetahui lebih banyak tentang saya dan
+        proyek-proyek yang telah saya kerjakan. Saya senang berbagi kisah dan
+        pengalaman melalui halaman ini.
+      </p>
+      <p className="text-sm md:text-base text-justify md:text-justify mb-5">
+        Jangan ragu untuk menjelajahi setiap bagian. Jika Anda memiliki
+        pertanyaan atau ingin berbicara lebih lanjut, silakan hubungi saya.
+        Terima kasih lagi dan selamat menikmati!
+      </p>
+
+      <div className="flex  md:flex-row gap-2 my-2">
+        <button className="btn btn-outline" onClick={handleDownloadCV}>
+          Download CV
+        </button>
+        <button className="btn btn-outline" onClick={handleContactMe}>
+          Hubungi saya
+        </button>
+      </div>
+    </div>
   );
-}
+};
+
+const ImageContent = () => {
+  return (
+    <div className="image-content md:order-1 text-center md:text-left flex justify-center items-center">
+      <img
+        src={yourImage}
+        alt="Introduction"
+        className="w-2/4 md:w-3/4 h-auto rounded-full border-4 border-amber-200 mb-4 md:mb-0"
+      />
+    </div>
+  );
+};
+
+const Home = () => {
+  return (
+    <div className="introduction-container flex flex-col md:flex-row gap-8 items-center justify-center md:justify-start">
+      <ImageContent />
+      <TextContent />
+    </div>
+  );
+};
 
 export default Home;
